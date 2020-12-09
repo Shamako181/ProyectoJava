@@ -105,4 +105,31 @@ public class ControladorUsuarios {
         }
     }
     
+    public String validarUsuario(String correo)
+    {
+        String contraseña ="";
+        
+        try
+        {
+            Conexion conexion = new Conexion();
+            Connection con = conexion.getConnection();
+            
+            PreparedStatement ps = con.prepareStatement("SELECT  CONTRASEÑA WHERE NOMBRE LIKE ?;");
+            ps.setString(1, correo);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            contraseña=rs.getString("contraseña");
+            
+            return contraseña;
+            
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+            return contraseña;
+        }
+        
+    }
+    
 }
