@@ -122,7 +122,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void mi_listProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_listProductActionPerformed
-        
+        ListarProductos listPro = new ListarProductos();
+        listPro.setVisible(true);
     }//GEN-LAST:event_mi_listProductActionPerformed
 
     private void mi_listUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_listUsuActionPerformed

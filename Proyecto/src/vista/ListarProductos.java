@@ -132,26 +132,24 @@ public class ListarProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_buscadorActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        if(txt_buscador.getText().equals(""))
-            JOptionPane.showMessageDialog(rootPane, "Debe ingreasar un nombre");
-        else
+        
         {
             ControladorProductos contro = new ControladorProductos();
             String nombre = txt_buscador.getText();
             
-            ArrayList<Producto> listaProductos= contro.buscarPorNombre(nombre);
+            ArrayList<Producto> listaProductos = contro.buscarPorNombre(nombre);
             
             DefaultTableModel modelo = (DefaultTableModel)tbl_productos.getModel();
             modelo.setRowCount(0);
             
-            for(Producto j:listaProductos)
+            for(Producto p:listaProductos)
             {
                 Object[] objeto = {
-                j.getNombre(),
-                j.getMarca(),
-                j.getDescripcion(),
-                j.getPrecio(),
-                j.getCodigoDeBarras(),
+                p.getNombre(),
+                p.getMarca(),
+                p.getDescripcion(),
+                p.getPrecio(),
+                p.getCodigoDeBarras()
             };
                 
                 modelo.addRow(objeto);

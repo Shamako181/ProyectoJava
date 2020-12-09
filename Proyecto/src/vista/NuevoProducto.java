@@ -82,6 +82,11 @@ public class NuevoProducto extends javax.swing.JFrame {
 
         btn_volver.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_volver.setText("Volver");
+        btn_volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_volverActionPerformed(evt);
+            }
+        });
 
         bnt_guardar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bnt_guardar.setText("Guardar");
@@ -177,6 +182,10 @@ public class NuevoProducto extends javax.swing.JFrame {
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombreActionPerformed
+
+    private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btn_volverActionPerformed
 
     /**
      * @param args the command line arguments

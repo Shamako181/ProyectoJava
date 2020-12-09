@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import modelo.Producto;
 
+
 /**
  *
  * @author raulj
@@ -65,15 +66,15 @@ public class ControladorProductos {
             
             while(rs.next()){
                 
-                Producto produ = new Producto();
+                Producto p = new Producto();
                 
-                produ.setNombre(rs.getString("nombre"));
-                produ.setDescripcion(rs.getString("descripcion"));
-                produ.setMarca(rs.getString("marca"));
-                produ.setPrecio(rs.getInt("precio"));
-                produ.setCodigoDeBarras(rs.getString("codigo_de_barras"));
+                p.setNombre(rs.getString("nombre"));
+                p.setDescripcion(rs.getString("descripcion"));
+                p.setMarca(rs.getString("marca"));
+                p.setPrecio(rs.getInt("precio"));
+                p.setCodigoDeBarras(rs.getString("codigo_de_barras"));
                 
-                listaProductos.add(produ);
+                listaProductos.add(p);
             
             }
             
@@ -89,7 +90,36 @@ public class ControladorProductos {
     
     public ArrayList<Producto> buscarPorNombre(String nombre)
     {
-        return new ArrayList<>();
+        try
+        {
+            ArrayList<Producto> listaProducto = new ArrayList<>();
+            Conexion conexion = new Conexion();
+            Connection con = conexion.getConnection();
+            
+            PreparedStatement ps = con.prepareStatement("SELECT NOMBRE,DESCRIPCION,MARCA,PRECIO,CODIGO_DE_BARRAS FROM PRODUCTO WHERE NOMBRE LIKE ?;");
+            ps.setString(1, nombre + "%");
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()) {
+                Producto p = new Producto();
+                p.setNombre(rs.getString("nombre"));
+                p.setDescripcion(rs.getString("descripcion"));
+                p.setMarca(rs.getString("marca"));
+                p.setPrecio(rs.getInt("precio"));
+                p.setCodigoDeBarras(rs.getString("codigo_de_barras"));
+                
+                
+                listaProducto.add(p);
+            }
+            
+            return listaProducto;
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+            return new ArrayList<>();
+        }
     }
     
 }
