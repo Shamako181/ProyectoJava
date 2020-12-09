@@ -42,8 +42,8 @@ public class NuevoProducto extends javax.swing.JFrame {
         txt_marca = new javax.swing.JTextField();
         txt_descipcion = new javax.swing.JTextField();
         txt_codigoBarra = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_volver = new javax.swing.JButton();
+        bnt_guardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -75,14 +75,14 @@ public class NuevoProducto extends javax.swing.JFrame {
 
         txt_codigoBarra.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setText("Volver");
+        btn_volver.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_volver.setText("Volver");
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setText("Guardar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bnt_guardar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bnt_guardar.setText("Guardar");
+        bnt_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bnt_guardarActionPerformed(evt);
             }
         });
 
@@ -114,9 +114,9 @@ public class NuevoProducto extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(82, 82, 82))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(bnt_guardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(btn_volver)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -146,15 +146,15 @@ public class NuevoProducto extends javax.swing.JFrame {
                     .addComponent(txt_codigoBarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btn_volver)
+                    .addComponent(bnt_guardar))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bnt_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_guardarActionPerformed
         ControladorProductos contro = new ControladorProductos();
          
         String nombre = txt_nombre.getText();
@@ -167,7 +167,7 @@ public class NuevoProducto extends javax.swing.JFrame {
         
         contro.guardarProducto(pro);
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bnt_guardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,8 +205,8 @@ public class NuevoProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton bnt_guardar;
+    private javax.swing.JButton btn_volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
