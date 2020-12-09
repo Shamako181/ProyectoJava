@@ -68,6 +68,11 @@ public class NuevoProducto extends javax.swing.JFrame {
         txt_precio.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         txt_nombre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nombreActionPerformed(evt);
+            }
+        });
 
         txt_marca.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -168,6 +173,10 @@ public class NuevoProducto extends javax.swing.JFrame {
         contro.guardarProducto(pro);
         
     }//GEN-LAST:event_bnt_guardarActionPerformed
+
+    private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nombreActionPerformed
 
     /**
      * @param args the command line arguments

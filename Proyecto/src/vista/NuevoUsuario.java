@@ -148,7 +148,7 @@ public class NuevoUsuario extends javax.swing.JFrame {
         
         ControladorUsuarios contro = new ControladorUsuarios();
         
-        contro.guardarUsaurio(usu);
+        contro.guardarUsuario(usu);
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     /**

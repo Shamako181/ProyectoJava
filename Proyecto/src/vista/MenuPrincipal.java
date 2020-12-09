@@ -38,8 +38,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        mi_listProduct = new javax.swing.JMenuItem();
+        mi_listUsu = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -76,21 +76,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Mantenedores");
 
-        jMenuItem4.setText("Listar Productos");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        mi_listProduct.setText("Listar Productos");
+        mi_listProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                mi_listProductActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        jMenu2.add(mi_listProduct);
 
-        jMenuItem6.setText("Listar Usuarios");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        mi_listUsu.setText("Listar Usuarios");
+        mi_listUsu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                mi_listUsuActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem6);
+        jMenu2.add(mi_listUsu);
 
         jMenuBar1.add(jMenu2);
 
@@ -121,13 +121,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         usuario.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void mi_listProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_listProductActionPerformed
         
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_mi_listProductActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    private void mi_listUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_listUsuActionPerformed
+        ListarUsuarios listUsu = new ListarUsuarios();
+        listUsu.setVisible(true);
+    }//GEN-LAST:event_mi_listUsuActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
        NuevoProducto producto = new NuevoProducto();
@@ -177,10 +178,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenuItem mi_listProduct;
+    private javax.swing.JMenuItem mi_listUsu;
     // End of variables declaration//GEN-END:variables
 }
