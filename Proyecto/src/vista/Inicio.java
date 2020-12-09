@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package vista;
-
+import javax.swing.JOptionPane;
+import controlador.ControladorUsuarios;
 /**
  *
  * @author raulj
@@ -119,8 +120,16 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
-        MenuPrincipal menu = new MenuPrincipal();
-        menu.setVisible(true);
+
+        if(txt_usuario.getText().equals("") && txt_contrasena.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(rootPane, "Debe ingresar un usuario y contaseña");
+        }else{
+            
+            MenuPrincipal menu = new MenuPrincipal();
+            menu.setVisible(true);
+        }   
+        
     }//GEN-LAST:event_btn_ingresarActionPerformed
 
     private void btn_registActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registActionPerformed
