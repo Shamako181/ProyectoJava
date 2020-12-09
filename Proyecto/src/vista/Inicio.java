@@ -44,7 +44,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel1.setText("Iniciar Sesion");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Usuario");
+        jLabel2.setText("Correo");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Contraseña");
