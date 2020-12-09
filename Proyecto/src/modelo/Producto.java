@@ -16,6 +16,10 @@ public class Producto {
     private String marca;
     private String descripcion;
     private String codigoDeBarras;
+    
+    public Producto()
+    {
+    }
 
     public Producto(String nombre, int Precio, String descripcion, String codigoDeBarras,String marca) {
         this.nombre = nombre;
