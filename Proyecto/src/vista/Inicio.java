@@ -120,14 +120,17 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
-
+        
+        ControladorUsuarios contro = new ControladorUsuarios();
+        
         if(txt_usuario.getText().equals("") && txt_contrasena.getText().equals(""))
         {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar un usuario y contaseña");
-        }else{
-            
+        }else if(contro.validarUsuario(txt_usuario.getText()).equals(txt_contrasena)){
             MenuPrincipal menu = new MenuPrincipal();
             menu.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado");
         }   
         
     }//GEN-LAST:event_btn_ingresarActionPerformed
