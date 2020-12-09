@@ -14,7 +14,7 @@ import modelo.Producto;
  *
  * @author raulj
  */
-public class ContoladorProductos {
+public class ControladorProductos {
     
     public void guardarProducto(Producto pro)
     {
