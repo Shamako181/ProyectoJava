@@ -6,6 +6,9 @@
 package vista;
 import modelo.Producto;
 import controlador.ControladorProductos;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author raulj
@@ -18,6 +21,7 @@ public class Venta extends javax.swing.JFrame {
     public Venta() {
         initComponents();
         cargarComboBox();
+        txt_total.setEditable(false);
     }
     
     public void cargarComboBox()
@@ -25,7 +29,16 @@ public class Venta extends javax.swing.JFrame {
         ControladorProductos contro = new ControladorProductos();
         Producto producto = new Producto();
         
-        ddl_productos.addItem("Hola "+"Mundo");
+        ArrayList<Producto> listaProductos = contro.listarProductos();
+        
+        DefaultTableModel modelo = (DefaultTableModel)tbl_carrito.getModel();
+        modelo.setRowCount(0);
+        
+        for (int i = 0; i < listaProductos.size(); i++) {
+            String nombre = listaProductos.get(i).getNombre();
+            String precio = listaProductos.get(i).getPrecio()+"";
+            ddl_productos.addItem(nombre+" ("+precio+")");
+        }
         
     }
 
@@ -42,11 +55,11 @@ public class Venta extends javax.swing.JFrame {
         ddl_productos = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_total = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_carrito = new javax.swing.JTable();
         btn_volver = new javax.swing.JButton();
-        btn_genVent = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,9 +78,9 @@ public class Venta extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Total:");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_total.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_carrito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -86,7 +99,7 @@ public class Venta extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tbl_carrito);
 
         btn_volver.setText("Volver");
         btn_volver.addActionListener(new java.awt.event.ActionListener() {
@@ -95,12 +108,7 @@ public class Venta extends javax.swing.JFrame {
             }
         });
 
-        btn_genVent.setText("Generar venta");
-        btn_genVent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_genVentActionPerformed(evt);
-            }
-        });
+        jButton2.setText("Generar venta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,9 +120,9 @@ public class Venta extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(56, 56, 56)
-                        .addComponent(btn_genVent)
+                        .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_volver))
                     .addGroup(layout.createSequentialGroup()
@@ -146,9 +154,9 @@ public class Venta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_volver)
-                    .addComponent(btn_genVent))
+                    .addComponent(jButton2))
                 .addGap(18, 18, 18))
         );
 
@@ -162,10 +170,6 @@ public class Venta extends javax.swing.JFrame {
     private void ddl_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddl_productosActionPerformed
         
     }//GEN-LAST:event_ddl_productosActionPerformed
-
-    private void btn_genVentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_genVentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_genVentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,14 +207,14 @@ public class Venta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_genVent;
     private javax.swing.JButton btn_volver;
     private javax.swing.JComboBox ddl_productos;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbl_carrito;
+    private javax.swing.JTextField txt_total;
     // End of variables declaration//GEN-END:variables
 }
