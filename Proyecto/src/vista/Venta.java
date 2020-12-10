@@ -26,19 +26,25 @@ public class Venta extends javax.swing.JFrame {
     
     public void cargarComboBox()
     {
-        ControladorProductos contro = new ControladorProductos();
-        Producto producto = new Producto();
+        try{
+            ControladorProductos contro = new ControladorProductos();
+            Producto producto = new Producto();
         
-        ArrayList<Producto> listaProductos = contro.listarProductos();
+            ArrayList<Producto> listaProductos = contro.listarProductos();
         
-        DefaultTableModel modelo = (DefaultTableModel)tbl_carrito.getModel();
-        modelo.setRowCount(0);
+            DefaultTableModel modelo = (DefaultTableModel)tbl_carrito.getModel();
+            modelo.setRowCount(0);
         
-        for (int i = 0; i < listaProductos.size(); i++) {
+            for (int i = 0; i < listaProductos.size(); i++) {
             String nombre = listaProductos.get(i).getNombre();
             String precio = listaProductos.get(i).getPrecio()+"";
             ddl_productos.addItem(nombre+" ("+precio+")");
+            }
+        }catch(Exception ex)
+        {
+            ex.printStackTrace();
         }
+        
         
     }
 
