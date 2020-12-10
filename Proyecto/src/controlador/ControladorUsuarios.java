@@ -114,12 +114,17 @@ public class ControladorUsuarios {
             Conexion conexion = new Conexion();
             Connection con = conexion.getConnection();
             
-            PreparedStatement ps = con.prepareStatement("SELECT  CONTRASEÑA WHERE NOMBRE LIKE ?;");
-            ps.setString(1, correo);
+            PreparedStatement ps = con.prepareStatement("SELECT  CONTRASEÑA FROM USUARIO WHERE CORREO = ?;");
+            ps.setString( 1,correo);
             
             ResultSet rs = ps.executeQuery();
             
-            contraseña=rs.getString("contraseña");
+            
+            
+            while(rs.next()) {
+                contraseña=rs.getString("contraseña");
+            }
+            
             
             return contraseña;
             
