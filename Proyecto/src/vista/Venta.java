@@ -21,19 +21,21 @@ public class Venta extends javax.swing.JFrame {
     public Venta() {
         initComponents();
         cargarComboBox();
+        DefaultTableModel model = (DefaultTableModel)tbl_carrito.getModel();
         txt_total.setEditable(false);
     }
+    
     
     public void cargarComboBox()
     {
         try{
+            DefaultTableModel modelo = (DefaultTableModel)tbl_carrito.getModel();
+            modelo.setRowCount(0);
+            
             ControladorProductos contro = new ControladorProductos();
             Producto producto = new Producto();
         
             ArrayList<Producto> listaProductos = contro.listarProductos();
-        
-            DefaultTableModel modelo = (DefaultTableModel)tbl_carrito.getModel();
-            modelo.setRowCount(0);
         
             for (int i = 0; i < listaProductos.size(); i++) {
             String nombre = listaProductos.get(i).getNombre();
@@ -59,13 +61,13 @@ public class Venta extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         ddl_productos = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        btn_agregar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txt_total = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_carrito = new javax.swing.JTable();
         btn_volver = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_calcular = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -79,7 +81,12 @@ public class Venta extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("+");
+        btn_agregar.setText("+");
+        btn_agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Total:");
@@ -114,7 +121,12 @@ public class Venta extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Generar venta");
+        btn_calcular.setText("Calcular");
+        btn_calcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_calcularActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,7 +140,7 @@ public class Venta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(56, 56, 56)
-                        .addComponent(jButton2)
+                        .addComponent(btn_calcular)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_volver))
                     .addGroup(layout.createSequentialGroup()
@@ -141,7 +153,7 @@ public class Venta extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(ddl_productos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1))
+                                .addComponent(btn_agregar))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 44, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -154,7 +166,7 @@ public class Venta extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ddl_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btn_agregar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
@@ -162,7 +174,7 @@ public class Venta extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_volver)
-                    .addComponent(jButton2))
+                    .addComponent(btn_calcular))
                 .addGap(18, 18, 18))
         );
 
@@ -177,6 +189,63 @@ public class Venta extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ddl_productosActionPerformed
 
+    private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
+                 
+            
+            if(ddl_productos.getSelectedIndex()==0)
+            {
+                JOptionPane.showMessageDialog(rootPane, "Debe seleccionar un producto");
+            }else
+            {
+                DefaultTableModel modelo = (DefaultTableModel)tbl_carrito.getModel();
+                
+                String precio ="";
+            
+                String nombre = ddl_productos.getSelectedItem().toString();
+                
+                int fila = tbl_carrito.getRowCount();
+                
+                String valor="";
+              
+                String[] partes=nombre.split(" ");
+
+                nombre=partes[0];
+                precio=partes[1].replace("(", "");
+                precio=precio.replace(")","");
+                
+                modelo.addRow(new Object[]{nombre,precio});
+                
+            }
+            
+    }//GEN-LAST:event_btn_agregarActionPerformed
+
+    private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
+        int fila = tbl_carrito.getRowCount();
+        
+        String valor="";
+        int total=0;
+        
+        for (int i = 0; i < fila; i++) {
+            valor=(String)tbl_carrito.getValueAt(i, 1);
+            total=total+Integer.parseInt(valor);
+        }
+        
+        txt_total.setText(total+"");
+        
+    }//GEN-LAST:event_btn_calcularActionPerformed
+
+    public int calcularTotal()
+    {
+        int total=0;
+        
+        int fila = tbl_carrito.getRowCount();
+        
+        for (int i = 0; i < fila; i++) {
+            
+        }
+        
+        return total;
+    }
     /**
      * @param args the command line arguments
      */
@@ -213,10 +282,10 @@ public class Venta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_calcular;
     private javax.swing.JButton btn_volver;
     private javax.swing.JComboBox ddl_productos;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
