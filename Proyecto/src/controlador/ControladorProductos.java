@@ -49,6 +49,8 @@ public class ControladorProductos {
         
         codigo=codigo+nombre.substring(0,2)+numero.substring(0,3)+marca.substring(0,2);
         
+        codigo=codigo.toUpperCase();
+        
         return codigo;
         
     }
