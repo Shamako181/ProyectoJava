@@ -7,6 +7,7 @@ package vista;
 
 import modelo.Usuario;
 import controlador.ControladorUsuarios;
+import javax.swing.JOptionPane;
 /**
  *
  * @author carol
@@ -140,6 +141,26 @@ public class NuevoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_volverActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        
+        String mensaje = "";
+        
+        if(txt_nombre.getText().equals(""))
+        {
+            mensaje = "Debe ingresar un nombre \n";
+            JOptionPane.showMessageDialog(rootPane, mensaje);
+        }   
+        if(txt_correo.getText().equals("")){
+            
+            mensaje = "Debe ingresar un correo \n";
+            JOptionPane.showMessageDialog(rootPane, mensaje);
+        }
+        if(txt_contrasena.getText().equals("")){
+            
+            mensaje = "Debe ingresar una comtraseña \n";
+            JOptionPane.showMessageDialog(rootPane, mensaje);
+        }
+        else{
+        
         String nombre = txt_nombre.getText();
         String correo = txt_correo.getText();
         String contrasena=txt_contrasena.getText();
@@ -149,6 +170,7 @@ public class NuevoUsuario extends javax.swing.JFrame {
         ControladorUsuarios contro = new ControladorUsuarios();
         
         contro.guardarUsuario(usu);
+        }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     /**

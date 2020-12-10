@@ -5,6 +5,7 @@
  */
 package vista;
 import controlador.ControladorProductos;
+import javax.swing.JOptionPane;
 import modelo.Producto;
 /**
  *
@@ -166,6 +167,25 @@ public class NuevoProducto extends javax.swing.JFrame {
 
     private void bnt_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_guardarActionPerformed
         ControladorProductos contro = new ControladorProductos();
+        
+        String mensaje = "";
+        
+        if(txt_nombre.getText().equals(""))
+        {
+            mensaje = "Debe ingresar un nombre \n";
+            JOptionPane.showMessageDialog(rootPane, mensaje);
+        }   
+        if(txt_precio.getText().equals("")){
+            
+            mensaje = "Debe ingresar el precio \n";
+            JOptionPane.showMessageDialog(rootPane, mensaje);
+        }
+        if(txt_marca.getText().equals("")){
+            
+            mensaje = "Debe ingresar la marca \n";
+            JOptionPane.showMessageDialog(rootPane, mensaje);
+        }
+        else{
          
         String nombre = txt_nombre.getText();
         int precio = Integer.parseInt(txt_precio.getText());
@@ -177,7 +197,7 @@ public class NuevoProducto extends javax.swing.JFrame {
         Producto  pro = new Producto(nombre, precio, descripcion, codigo, marca);
         
         contro.guardarProducto(pro);
-        
+        }
     }//GEN-LAST:event_bnt_guardarActionPerformed
 
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed

@@ -46,7 +46,7 @@ public class Venta extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btn_volver = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_genVent = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -95,7 +95,12 @@ public class Venta extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Generar venta");
+        btn_genVent.setText("Generar venta");
+        btn_genVent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_genVentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,7 +114,7 @@ public class Venta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(56, 56, 56)
-                        .addComponent(jButton2)
+                        .addComponent(btn_genVent)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_volver))
                     .addGroup(layout.createSequentialGroup()
@@ -143,7 +148,7 @@ public class Venta extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_volver)
-                    .addComponent(jButton2))
+                    .addComponent(btn_genVent))
                 .addGap(18, 18, 18))
         );
 
@@ -157,6 +162,10 @@ public class Venta extends javax.swing.JFrame {
     private void ddl_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddl_productosActionPerformed
         
     }//GEN-LAST:event_ddl_productosActionPerformed
+
+    private void btn_genVentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_genVentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_genVentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,10 +203,10 @@ public class Venta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_genVent;
     private javax.swing.JButton btn_volver;
     private javax.swing.JComboBox ddl_productos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
