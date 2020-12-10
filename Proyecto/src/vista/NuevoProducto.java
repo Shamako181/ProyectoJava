@@ -77,6 +77,11 @@ public class NuevoProducto extends javax.swing.JFrame {
         txt_marca.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         txt_descipcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_descipcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_descipcionKeyPressed(evt);
+            }
+        });
 
         txt_codigoBarra.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -171,7 +176,7 @@ public class NuevoProducto extends javax.swing.JFrame {
         int precio = Integer.parseInt(txt_precio.getText());
         String marca = txt_marca.getText();
         String descripcion  = txt_descipcion.getText();
-        txt_codigoBarra.setText(contro.crearCodigo(nombre, precio,marca));
+
         String codigo = contro.crearCodigo(nombre, precio,marca);
         
         Producto  pro = new Producto(nombre, precio, descripcion, codigo, marca);
@@ -187,6 +192,16 @@ public class NuevoProducto extends javax.swing.JFrame {
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
+
+    private void txt_descipcionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_descipcionKeyPressed
+        ControladorProductos contro = new ControladorProductos();
+        
+        String nombre = txt_nombre.getText();
+        int precio = Integer.parseInt(txt_precio.getText());
+        String marca = txt_marca.getText();
+        String descripcion  = txt_descipcion.getText();
+        txt_codigoBarra.setText(contro.crearCodigo(nombre, precio,marca));
+    }//GEN-LAST:event_txt_descipcionKeyPressed
 
     /**
      * @param args the command line arguments
