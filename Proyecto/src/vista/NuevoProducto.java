@@ -171,7 +171,8 @@ public class NuevoProducto extends javax.swing.JFrame {
         int precio = Integer.parseInt(txt_precio.getText());
         String marca = txt_marca.getText();
         String descripcion  = txt_descipcion.getText();
-        String codigo = contro.crearCodigo(nombre, precio);
+        txt_codigoBarra.setText(contro.crearCodigo(nombre, precio,marca));
+        String codigo = contro.crearCodigo(nombre, precio,marca);
         
         Producto  pro = new Producto(nombre, precio, descripcion, codigo, marca);
         

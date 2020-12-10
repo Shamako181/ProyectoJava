@@ -126,12 +126,22 @@ public class Inicio extends javax.swing.JFrame {
         if(txt_usuario.getText().equals("") && txt_contrasena.getText().equals(""))
         {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar un usuario y contaseña");
-        }else if(contro.validarUsuario(txt_usuario.getText()).equals(txt_contrasena)){
-            MenuPrincipal menu = new MenuPrincipal();
-            menu.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado");
-        }   
+            
+            String usuario = txt_usuario.getText();
+            String contra = txt_contrasena.getText();
+            String contra2=contro.validarUsuario(usuario);
+            
+            if (contra.equals(contra2)) {
+                
+                MenuPrincipal menu = new MenuPrincipal();
+                menu.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado");
+            }  
+            
+            
+        }
         
     }//GEN-LAST:event_btn_ingresarActionPerformed
 

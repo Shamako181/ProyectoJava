@@ -42,11 +42,14 @@ public class ControladorProductos {
         }
     }
     
-    public String crearCodigo(String nombre,int Precio)
+    public String crearCodigo(String nombre,int precio,String marca)
     {
+        String codigo="";
+        String numero = precio+"";
         
+        codigo=codigo+nombre.substring(0,2)+numero.substring(0,3)+marca.substring(0,2);
         
-        return "Hola";
+        return codigo;
         
     }
     
